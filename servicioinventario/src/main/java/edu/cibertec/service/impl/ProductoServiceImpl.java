@@ -1,45 +1,47 @@
 package edu.cibertec.service.impl;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
-import lombok.RequiredArgsConstructor;
+
 import edu.cibertec.entity.ProductoEntity;
 import edu.cibertec.repository.ProductoRepository;
 import edu.cibertec.service.ProductoService;
-
+import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ProductoServiceImpl implements ProductoService {
-    private final ProductoRepository productoRepository;
+public class ProductoServiceImpl implements ProductoService{
 
-     @Override
-    public List<ProductoEntity> listarProducto() {
-        return productoRepository.findAll();
+    private final ProductoRepository productoRepository;
+    @Override
+    public List<ProductoEntity> listarProductos() {
+                return productoRepository.findAll();
     }
 
-     @Override
-     public ProductoEntity obtenerProducto(Integer idProducto) {
-          return productoRepository.findById(idProducto).orElse(null);
-     }
+    @Override
+    public ProductoEntity obtenerProducto(Integer id) {
+        return productoRepository.findById(id).orElse(null);
+    }
 
-     @Override
-     public ProductoEntity registrarProducto(ProductoEntity producto) {
+    @Override
+    public ProductoEntity registrarProducto(ProductoEntity producto) {
         return productoRepository.save(producto);
-     }
+    }
 
-     @Override
-     public ProductoEntity actualizarProducto(ProductoEntity producto) {
+    @Override
+    public ProductoEntity actualizarProducto(ProductoEntity producto) {
         return productoRepository.save(producto);
-     }
+    }
 
-     @Override
-     public ProductoEntity eliminarProducto(Integer idProducto) {
-        ProductoEntity producto = obtenerProducto(idProducto);
+    @Override
+    public ProductoEntity eliminarProducto(Integer id) {
+        ProductoEntity producto = obtenerProducto(id);
         if (producto != null) {
-            //producto.set(0);
+            producto.setEstado(0);
             productoRepository.save(producto);
         }
         return producto;
-     }
+    }
+    
 }

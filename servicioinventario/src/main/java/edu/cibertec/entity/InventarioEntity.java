@@ -1,5 +1,7 @@
 package edu.cibertec.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,12 +25,16 @@ public class InventarioEntity {
     @Column(name = "id")
     private Integer id;
     @Column(name = "productid")
+    @JsonProperty("productoID")
     private Integer productoID;
     @Column(name = "branchid")
+    @JsonProperty("sucursalID")
     private Integer sucursalID;
     @Column(name = "quantity")
+    @JsonProperty("cantidad")
     private Integer cantidad;
     @Column(name = "estado")
+    @JsonProperty("estado")
     private int estado;
     
 }

@@ -20,8 +20,8 @@ public class SucursalServiceImpl implements SucursalService {
     }
 
      @Override
-     public SucursalEntity obtenerSucursal(Integer idSucursal) {
-        return sucursalRepository.findById(idSucursal).orElse(null);
+     public SucursalEntity obtenerSucursal(Integer id) {
+        return sucursalRepository.findById(id).orElse(null);
      }
 
      @Override
@@ -35,10 +35,10 @@ public class SucursalServiceImpl implements SucursalService {
      }
 
      @Override
-     public SucursalEntity eliminarSucursal(Integer idSucursal) {
-        SucursalEntity sucursal = obtenerSucursal(idSucursal);
+     public SucursalEntity eliminarSucursal(Integer id) {
+        SucursalEntity sucursal = obtenerSucursal(id);
         if (sucursal != null) {
-            //sucursal.set(0);
+            sucursal.setEstado(0);
             sucursalRepository.save(sucursal);
         }
         return sucursal;

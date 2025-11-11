@@ -19,25 +19,25 @@ public class InventarioServiceImpl implements InventarioService {
     }
 
      @Override
-     public InventarioEntity obtenerCurso(Integer idinventario) {
-        return inventarioRepository.findById(idinventario).orElse(null);
+     public InventarioEntity obtenerInventario(Integer id) {
+        return inventarioRepository.findById(id).orElse(null);
      }
 
      @Override
-     public InventarioEntity registrarCurso(InventarioEntity inventario) {
+     public InventarioEntity registrarInventario(InventarioEntity inventario) {
         return inventarioRepository.save(inventario);
      }
 
      @Override
-     public InventarioEntity actualizarCurso(InventarioEntity inventario) {
+     public InventarioEntity actualizarInventario(InventarioEntity inventario) {
         return inventarioRepository.save(inventario);
      }
 
      @Override
-     public InventarioEntity eliminarCurso(Integer idinventario) {
-        InventarioEntity inventario = obtenerCurso(idinventario);
+     public InventarioEntity eliminarInventario(Integer id) {
+        InventarioEntity inventario = obtenerInventario(id);
         if (inventario != null) {
-            //inventario.setEstado(0);
+            inventario.setEstado(0);
             inventarioRepository.save(inventario);
         }
         return inventario;
